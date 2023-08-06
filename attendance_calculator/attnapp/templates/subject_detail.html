@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h1 class="text-center">Subject Detail</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-3"><strong>Name:</strong> {{ subject.name }}</p>
+                            <p class="mb-3"><strong>Total working hours:</strong> {{ subject.max_working_days }}</p>
+                            <!-- Add other subject details here -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="{% url 'subject_update' subject.id %}" class="btn btn-primary mr-2">Update Subject</a>
+                            <a href="{% url 'subject_delete' subject.id %}" class="btn btn-danger">Delete Subject</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

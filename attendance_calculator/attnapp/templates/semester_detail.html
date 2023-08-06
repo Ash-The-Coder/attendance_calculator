@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-4 mb-4 text-center">Semester Detail</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Name: {{ semester.name }}</h5>
+                    <!-- Add other semester details here -->
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-primary" href="{% url 'semester_update' semester.id %}">Update Semester</a>
+                        <a class="btn btn-danger" href="{% url 'semester_delete' semester.id %}">Delete Semester</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h1 class="text-center">User Detail</h1>
+                </div>
+                <div class="card-body">
+                    <p class="lead mb-4">Name: {{ user.name }}</p>
+                    <!-- Add other user details here -->
+                    <div class="text-center">
+                        <a href="{% url 'user_update' user.id %}" class="btn btn-primary mr-2">Update User</a>
+                        <a href="{% url 'user_delete' user.id %}" class="btn btn-danger">Delete User</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

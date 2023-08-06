@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="text-center mt-4">
+                <a href="{% url 'attendance_create' %}" class="btn btn-primary">Create New Attendance</a>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h1 class="text-center">Attendance List</h1>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for attendance in attendances %}
+                        <li class="list-group-item">
+                            <a href="{% url 'attendance_detail' attendance.id %}">
+                                {{ attendance.subject.name }} - {{ attendance.date }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

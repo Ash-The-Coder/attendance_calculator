@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .subject-link {
+        color: black;
+        text-decoration: underline;
+    }
+
+    .subject-link:hover {
+        color: blue;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="mt-4 mb-4 text-center">Subject List</h1>
+            <ul class="list-group">
+                {% for subject in subjects %}
+                <li class="list-group-item">
+                    <a href="{% url 'subject_detail' subject.id %}" class="subject-link">
+                        {{ subject.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="text-center mt-4">
+                <a href="{% url 'subject_create' %}" class="btn btn-primary">Create New Subject</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

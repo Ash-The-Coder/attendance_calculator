@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h1 class="text-center">User List</h1>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for user in users %}
+                        <li class="list-group-item">
+                            <a href="{% url 'user_detail' user.id %}" class="text-dark">
+                                {{ user.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'user_create' %}" class="btn btn-primary">Create New User</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

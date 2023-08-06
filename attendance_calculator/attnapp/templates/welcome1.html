@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <!-- Left-side column -->
+            <div class="col-lg-3" style="padding-top: 70px;">
+                <!-- Add custom styling for the left-side column -->
+                <div class="left-sidebar">
+                    <h4 class="text-center mb-4">Navigation</h4>
+                    <ul class="nav flex-column nav-pills">
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'semester_list' %}">Semesters</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'subject_list' %}">Subjects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'attendance_list' %}">Attendance Entries</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right-side column -->
+            <div class="col-lg-9" style="padding-left: 20px;">
+                <!-- Add content for the right-side column here -->
+                <h1 class="mt-4 mb-4 text-center">Welcome to Attendance Calculator</h1>
+                <div class="main-content">
+                    <p>
+                        This is the homepage for the Attendance Calculator app. Use the links below to navigate through the different sections:
+                    </p>
+                </div>
+                {% if not user.is_authenticated %}
+                    <p>You are not logged in. <a href="{% url 'login' %}">Login Here</a>.</p>
+                {% endif %}
+                <!-- Buttons -->
+                <div class="row justify-content-center text-center">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="link-button" href="{% url 'semester_create' %}">Create New Semester</a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="link-button" href="{% url 'subject_create' %}" >Create New Subject</a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="link-button" href="{% url 'attendance_create' %}" >Create New Attendance Entry</a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="link-button" href="{% url 'subject_attendance' %}" >Calculate Leave Days</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* Custom styles for the left-sidebar */
+        .left-sidebar {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .left-sidebar h4 {
+            color: #007bff;
+        }
+
+        .nav-pills .nav-link {
+            color: #333;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .nav-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Custom styles for the link buttons */
+        .link-button {
+            color: #007bff;
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 5px; /* Add margin around the buttons */
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            display: block; /* Ensure the buttons take full width */
+        }
+
+        .link-button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Custom styles for the main content */
+        .main-content {
+            margin-top: 20px; /* Add margin between button groups */
+        }
+    </style>
+{% endblock %}
